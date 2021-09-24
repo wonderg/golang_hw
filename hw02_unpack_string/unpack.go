@@ -29,8 +29,5 @@ func Unpack(s string) (string, error) {
 	return newS, nil
 }
 
-func main() {
-	fmt.Println(Unpack("a4bc2d5e"))
-}
 
 // * "a4bc2d5e" => "aaaabccddddde"
