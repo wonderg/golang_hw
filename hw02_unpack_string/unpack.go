@@ -14,14 +14,16 @@ func Unpack(s string) (string, error) {
 	newS := ""
 	fmt.Println(len(s))
 	for i := 0; i <= len(s)-1; i++ {
-		if unicode.IsDigit(rune(s[i])) {
+		fmt.Println(i)
+		switch {
+		case unicode.IsDigit(rune(s[i])):
 			return "", ErrInvalidString
-		} else if i < len(s)-1 && unicode.IsDigit(rune(s[i+1])) {
+		case i < len(s)-1 && unicode.IsDigit(rune(s[i+1])):
 			byteToInt, _ := strconv.Atoi(string(s[i+1]))
 			multipliedChar := strings.Repeat(string(s[i]), byteToInt)
 			newS += multipliedChar
 			i++
-		} else {
+		default:
 			newS += string(s[i])
 		}
 	}
