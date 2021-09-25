@@ -118,3 +118,7 @@ The byte data type represents ASCII characters while the rune data type represen
 ```
 fmt.Println(reflect.TypeOf('0'))
 ```
+
+Examples
+strings.Builder https://www.calhoun.io/concatenating-and-building-strings-in-go/
+strings.Repeat 
