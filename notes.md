@@ -1,3 +1,5 @@
+https://github.com/OtusGolang/home_work/wiki/[%D0%A1%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D0%B0%D0%BC]-%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81%D0%B4%D0%B0%D1%87%D0%B8-%D0%94%D0%97
+
 # GoTour 
 Current progress --> https://tour.golang.org/flowcontrol/1
 
