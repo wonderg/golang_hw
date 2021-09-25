@@ -121,4 +121,4 @@ fmt.Println(reflect.TypeOf('0'))
 
 Examples
 strings.Builder https://www.calhoun.io/concatenating-and-building-strings-in-go/
-strings.Repeat 
+strings.Repeat https://qvault.io/golang/strings-builder-concatenation-golang/

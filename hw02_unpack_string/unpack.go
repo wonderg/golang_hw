@@ -11,7 +11,6 @@ import (
 var ErrInvalidString = errors.New("invalid string")
 
 func Unpack(s string) (string, error) {
-	//newS := ""
 	var sb strings.Builder
 	// fmt.Println(len(s))
 	fmt.Println(len(s))
