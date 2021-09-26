@@ -45,20 +45,12 @@ func TestUnpackInvalidString(t *testing.T) {
 }
 
 func TestUnpackUnicode(t *testing.T) {
-	tests := []struct {
-		input    string
-		expected string
-	}{
-		{input: "◔_◔", expected: "◔_◔"},
-		{input: "◔_◔2", expected: "◔_◔◔"},
-	}
-
-	for _, tc := range tests {
+	invalidStrings := []string{"◔_◔", "◔_◔2"}
+	for _, tc := range invalidStrings {
 		tc := tc
-		t.Run(tc.input, func(t *testing.T) {
-			result, err := Unpack(tc.input)
-			require.NoError(t, err)
-			require.Equal(t, tc.expected, result)
+		t.Run(tc, func(t *testing.T) {
+			_, err := Unpack(tc)
+			require.Truef(t, errors.Is(err, ErrInvalidString), "actual error %q", err)
 		})
 	}
 }

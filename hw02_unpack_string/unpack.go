@@ -3,32 +3,53 @@ package hw02unpackstring
 import (
 	"errors"
 	"fmt"
-	"strconv"
 	"strings"
 	"unicode"
 )
 
 var ErrInvalidString = errors.New("invalid string")
 
+var cache = map[string][]rune{}
+
+func RuneAt(s string, idx int) rune {
+	rs := cache[s]
+	if rs == nil {
+		rs = []rune(s)
+		cache[s] = []rune(s)
+	}
+	if idx >= len(rs) {
+		return 0
+	}
+	return rs[idx]
+}
+
 func Unpack(s string) (string, error) {
 	var sb strings.Builder
-	// fmt.Println(len(s))
-	fmt.Println(len(s))
-	for i := 0; i <= len(s)-1; i++ {
+	fmt.Println("input string:", s)
+	for pos, char := range s {
 		switch {
-		case unicode.IsDigit(rune(s[i])):
+		// shoudn't start from digit
+		case unicode.IsDigit(RuneAt(s, 0)):
 			return "", ErrInvalidString
-		case i < len(s)-1 && unicode.IsDigit(rune(s[i+1])):
-			fmt.Println("hack", string(s[i]))
-			byteToInt, _ := strconv.Atoi(string(s[i+1]))
-			multipliedChar := strings.Repeat(string(s[i]), byteToInt)
-			sb.WriteString(multipliedChar)
-			i++
-		default:
-			sb.WriteByte(s[i])
+		case unicode.IsLetter(char):
+			// letter + digit
+			if unicode.IsDigit(RuneAt(s, pos+1)) {
+				// https://stackoverflow.com/questions/21322173/convert-rune-to-int
+				// subtracting the value of rune '0' from any rune '0' through '9' will give you an integer 0 through 9
+				byteToInt := int(RuneAt(s, pos+1) - '0')
+				multipliedChar := strings.Repeat(string(char), byteToInt)
+				sb.WriteString(multipliedChar)
+				// letter only
+			} else {
+				sb.WriteString(string(char))
+			}
+		// digit + digit -> error
+		case unicode.IsDigit(RuneAt(s, pos)) && unicode.IsDigit(RuneAt(s, pos+1)):
+			return "", ErrInvalidString
+		// char != letter or digital
+		case !unicode.IsDigit(char) && !unicode.IsLetter(char):
+			return "", ErrInvalidString
 		}
 	}
 	return sb.String(), nil
 }
-
-// * "a4bc2d5e" => "aaaabccddddde"
