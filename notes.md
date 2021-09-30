@@ -1,9 +1,10 @@
-https://github.com/OtusGolang/home_work/wiki/[%D0%A1%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D0%B0%D0%BC]-%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81%D0%B4%D0%B0%D1%87%D0%B8-%D0%94%D0%97
+[https://github.com/OtusGolang/home\_work/wiki/\[%D0%A1%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D0%B0%D0%BC\]-%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81%D0%B4%D0%B0%D1%87%D0%B8-%D0%94%D0%97](https://github.com/OtusGolang/home_work/wiki/%5B%D0%A1%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D0%B0%D0%BC%5D-%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81%D0%B4%D0%B0%D1%87%D0%B8-%D0%94%D0%97)
+[GoTour](https://github.com/OtusGolang/home_work/wiki/%5B%D0%A1%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D0%B0%D0%BC%5D-%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81%D0%B4%D0%B0%D1%87%D0%B8-%D0%94%D0%97)
 
-# GoTour 
 Current progress --> https://tour.golang.org/flowcontrol/1
 
 ## Random
+
 By convention, the package name is the same as the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement package rand.
 
 Note: The environment in which these programs are executed is deterministic, so each time you run the example program rand.Intn will return the same number.
@@ -24,6 +25,7 @@ func main() {
 ```
 
 ## Named return values
+
 Go's return values may be named. If so, they are treated as variables defined at the top of the function.
 
 These names should be used to document the meaning of the return values.
@@ -49,6 +51,7 @@ func main() {
 ```
 
 ## Short variable declarations
+
 Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type.
 
 Outside a function, every statement begins with a keyword (var, func, and so on) and so the := construct is not available.
@@ -65,10 +68,10 @@ func main() {
 
 	fmt.Println(i, j, k, c, python, java)
 }
-
 ```
 
 ## Basic types
+
 Go's basic types are
 
 ``` go
@@ -93,16 +96,16 @@ The example shows variables of several types, and also that variable declaration
 
 The int, uint, and uintptr types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems. When you need an integer value you should use int unless you have a specific reason to use a sized or unsigned integer type
 
+# 002.
 
-# 002. 
 go mod vendor - to get src code for deps
 
-# Questions 
+# Questions
 
-- When shift operators could be used? Provide some real life use cases https://stackoverflow.com/questions/5801008/go-and-operators/5801065
+* When shift operators could be used? Provide some real life use cases https://stackoverflow.com/questions/5801008/go-and-operators/5801065
 
+# Strings
 
-# Strings 
 [src](https://www.bogotobogo.com/GoLang/GoLang_byte_and_rune.php)
 byte and rune
 Golang has integer types called byte and rune that are aliases for uint8 and int32 data types, respectively.
@@ -113,12 +116,16 @@ In Go, there is no char data type. It uses byte and rune to represent character 
 
 The byte data type represents ASCII characters while the rune data type represents a more broader set of Unicode characters that are encoded in UTF-8 format.
 
-
-
 ```
 fmt.Println(reflect.TypeOf('0'))
 ```
 
-Examples
+# Examples
+
 strings.Builder https://www.calhoun.io/concatenating-and-building-strings-in-go/
 strings.Repeat https://qvault.io/golang/strings-builder-concatenation-golang/
+<br>
+# Useful cmds
+
+golangci-lint run --fix
+gofumpt -w .
