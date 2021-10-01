@@ -27,10 +27,11 @@ func Unpack(s string) (string, error) {
 	var sb strings.Builder
 	fmt.Println("input string:", s)
 	for pos, char := range s {
-		switch {
 		// shoudn't start from digit
-		case unicode.IsDigit(RuneAt(s, 0)):
+		if pos == 0 && unicode.IsDigit(RuneAt(s, 0)) {
 			return "", ErrInvalidString
+		}
+		switch {
 		case unicode.IsLetter(char):
 			// letter + digit
 			if unicode.IsDigit(RuneAt(s, pos+1)) {
