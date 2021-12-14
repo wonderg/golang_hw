@@ -26,3 +26,4 @@ ehthumbs.db
 Thumbs.db
 .vscode/
 *.bak
+.unotes/unotes_meta.json
