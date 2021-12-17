@@ -6,12 +6,6 @@ import (
 	"strings"
 )
 
-// WordCount holds word and count pair
-type WordCount struct {
-	word  string
-	count int
-}
-
 func Top10(input string) []string {
 	wordsStat := make(map[string]int)
 	words := make([]string, 0)
