@@ -1,29 +1,47 @@
-package main
+package hw03frequencyanalysis
 
-//package hw03frequencyanalysis
 import (
-	"fmt"
+	"log"
+	"sort"
 	"strings"
 )
 
-
-
-func Top10(s string) []string {
-	countedList := []struct{
-		word string
-		counter int
-	}
-	list := strings.Fields(s)
-	for q := 0; q < len(list)-1; q++ {
-		if list[q] == list[q+1] {
-			fmt.Println("s:", list[q])
-		}
-	}
-	return nil
+// WordCount holds word and count pair
+type WordCount struct {
+	word  string
+	count int
 }
 
-func main() {
-	s := "cat and dog, one dog,two cats and one man"
-	Top10(s)
+func Top10(input string) []string {
+	wordsStat := make(map[string]int)
+	words := make([]string, 0)
 
+	// Count words and fill the map and slice
+	for _, word := range strings.Fields(input) {
+		if _, ok := wordsStat[word]; ok {
+			wordsStat[word]++
+		} else {
+			wordsStat[word] = 1
+			words = append(words, word)
+		}
+	}
+
+	log.Println("wordsStat:", wordsStat)
+	log.Println("words non-sort: ", words)
+
+	// Sort slice based on counter in map
+	sort.Slice(words, func(i, j int) bool {
+		if wordsStat[words[i]] == wordsStat[words[j]] {
+			return words[i] < words[j]
+		}
+		return wordsStat[words[i]] > wordsStat[words[j]]
+	})
+
+	top := 10
+	if top > len(wordsStat) {
+		top = len(wordsStat)
+	}
+
+	log.Println("words final: ", words[:top])
+	return words[:top]
 }
