@@ -1,27 +1,21 @@
 package hw03frequencyanalysis
 
 import (
-	"log"
 	"sort"
 	"strings"
 )
 
 func Top10(input string) []string {
 	wordsStat := make(map[string]int)
-	words := make([]string, 0)
+	var words []string
 
 	// Count words and fill the map and slice
 	for _, word := range strings.Fields(input) {
-		if _, ok := wordsStat[word]; ok {
-			wordsStat[word]++
-		} else {
-			wordsStat[word] = 1
+		wordsStat[word]++
+		if wordsStat[word] == 1 {
 			words = append(words, word)
 		}
 	}
-
-	log.Println("wordsStat:", wordsStat)
-	log.Println("words non-sort: ", words)
 
 	// Sort slice based on counter in map
 	sort.Slice(words, func(i, j int) bool {
@@ -36,6 +30,5 @@ func Top10(input string) []string {
 		top = len(wordsStat)
 	}
 
-	log.Println("words final: ", words[:top])
 	return words[:top]
 }
