@@ -120,6 +120,16 @@ The byte data type represents ASCII characters while the rune data type represen
 fmt.Println(reflect.TypeOf('0'))
 ```
 
+# Maps
+
+READ 
+https://go.dev/blog/maps
+Про устройство мапы:
+https://www.ardanlabs.com/blog/2013/12/macro-view-of-map-internals-in-go.html
+https://dave.cheney.net/2018/05/29/how-the-go-runtime-implements-maps-efficiently-without-generics
+
+
+
 # Examples
 
 strings.Builder https://www.calhoun.io/concatenating-and-building-strings-in-go/
